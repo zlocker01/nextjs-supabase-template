@@ -1,5 +1,13 @@
-'lint-staged';
-{
-  ('*.{js,jsx,ts,tsx}');
-  ['next lint --fix --file', 'prettier --ignore-path .gitignore --write'];
-}
+const path = require('path');
+
+const buildEslintCommand = (filenames) =>
+  `next lint --fix --file ${filenames
+    .map((f) => path.relative(process.cwd(), f))
+    .join(' --file ')}`;
+
+module.exports = {
+  '*.{js,jsx,ts,tsx}': [
+    buildEslintCommand,
+    'prettier --ignore-path .gitignore --write',
+  ],
+};
