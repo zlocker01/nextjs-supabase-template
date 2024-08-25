@@ -20,6 +20,14 @@ const config = {
     },
     extend: {
       colors: {
+        // * my colors
+        gold: '#efb810',
+        silver: '#808080',
+        bronze: '#bf8970',
+        goldHover: '#ffca2c',
+        silverHover: '#a0a0a0',
+        bronzeHover: '#d19a7f',
+        // !shadcn colors
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
