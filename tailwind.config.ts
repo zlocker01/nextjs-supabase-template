@@ -21,6 +21,7 @@ const config = {
     extend: {
       colors: {
         // * my colors
+        facebook: '#3b5998',
         gold: '#efb810',
         silver: '#808080',
         bronze: '#bf8970',

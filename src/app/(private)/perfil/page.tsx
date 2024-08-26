@@ -6,15 +6,16 @@ export default async function PrivatePage() {
   const supabase = createClient();
 
   const { data, error } = await supabase.auth.getUser();
-  console.log('🚀 ~ PrivatePage ~ data:', data);
   if (error || !data?.user) {
     redirect('/login');
   }
+  const user = data.user.user_metadata;
 
   return (
-    <>
-      <p>Hello {data.user.email}</p>
-      <LogoutButton />)
-    </>
+    <div className="flex flex-col justify-center items-center">
+      <h2>Bienvenido {user.name}</h2>
+      <p>Correo: {user.email}</p>
+      <LogoutButton />
+    </div>
   );
 }

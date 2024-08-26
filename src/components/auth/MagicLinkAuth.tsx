@@ -22,7 +22,7 @@ import { Input } from '@/components/ui/input';
  * @param {z.infer<typeof userFormSchema>} values - The values submitted in the form.
  * @return {void} This function does not return anything.
  */
-export const FormAuth = () => {
+export const MagicLinkAuth = () => {
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof userFormSchema>>({
@@ -39,7 +39,7 @@ export const FormAuth = () => {
     const { error } = await supabase.auth.signInWithOtp({
       email: values.email,
       options: {
-        emailRedirectTo: 'http://localhost:3000',
+        emailRedirectTo: 'http://localhost:3000/auth/confirm',
       },
     });
     if (error) {

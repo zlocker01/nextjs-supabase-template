@@ -12,11 +12,12 @@ export async function GET(request: NextRequest) {
   if (token_hash && type) {
     const supabase = createClient();
 
-    const { error } = await supabase.auth.verifyOtp({
+    const { data, error } = await supabase.auth.verifyOtp({
       type,
       token_hash,
     });
     if (!error) {
+      console.log('🚀 ~ GET ~ data:', data);
       redirect(next);
     }
     console.log('🚀 ~ GET ~ error:', error);
