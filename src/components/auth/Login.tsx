@@ -63,7 +63,7 @@ export const Login = () => {
         description: 'Vamos a iniciar sesión.',
         variant: 'success',
       });
-      revalidatePath('/');
+      revalidatePath('http://localhost:3000');
       redirect('http://localhost:3000/auth/confirm');
     }
   }

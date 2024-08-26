@@ -58,7 +58,7 @@ export const SignUp = () => {
         description: 'Bienvenido.',
         variant: 'success',
       });
-      revalidatePath('/');
+      revalidatePath('http://localhost:3000');
       redirect('http://localhost:3000/auth/confirm');
     }
   }
