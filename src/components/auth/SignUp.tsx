@@ -15,6 +15,8 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 
 /**
  * @description Asynchronous function to handle form submission sign up and login.
@@ -22,26 +24,26 @@ import { Input } from '@/components/ui/input';
  * @param {z.infer<typeof userFormSchema>} values - The values submitted in the form.
  * @return {void} This function does not return anything.
  */
-export const MagicLinkAuth = () => {
+export const SignUp = () => {
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof userFormSchema>>({
     resolver: zodResolver(userFormSchema),
     defaultValues: {
       email: '',
+      password: '',
     },
   });
 
   async function onSubmit(values: z.infer<typeof userFormSchema>) {
-    // setEmail(values.email);
     const supabase = createClient();
 
-    const { error } = await supabase.auth.signInWithOtp({
-      email: values.email,
-      options: {
-        emailRedirectTo: 'http://localhost:3000/auth/confirm',
-      },
-    });
+    const data = {
+      email: values.email as string,
+      password: values.password as string,
+    };
+
+    const { error } = await supabase.auth.signUp(data);
     if (error) {
       console.error('❌ error!!! -->', error);
       return toast({
@@ -53,9 +55,11 @@ export const MagicLinkAuth = () => {
     } else {
       toast({
         title: '¡Listo! 😎',
-        description: 'Revisa tu correo para usar tu Magic Link.',
+        description: 'Bienvenido.',
         variant: 'success',
       });
+      revalidatePath('/');
+      redirect('http://localhost:3000/auth/confirm');
     }
   }
 
@@ -77,14 +81,34 @@ export const MagicLinkAuth = () => {
                   />
                 </FormControl>
                 <FormDescription>
-                  Este es el correo con el que iniciaras sesión siempre
+                  Este es el correo con el que iniciarás sesión siempre.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Contraseña</FormLabel>
+                <FormControl>
+                  <Input
+                    type="password"
+                    placeholder="Escribe tu contraseña aquí"
+                    {...field}
+                  />
+                </FormControl>
+                <FormDescription>
+                  Ingresa una contraseña de al menos 6 caracteres.
                 </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
           <Button size={'xs'} type="submit">
-            Iniciar Sesión
+            Registrarse
           </Button>
         </form>
       </Form>

@@ -25,7 +25,7 @@ export const OAuth = () => {
       return toast({
         title: '¡Error inesperado! 😱',
         description:
-          'Ocurrió un error inesperado, por favor intenta nuevamente dentro de 1 minuto.',
+          'Ocurrió un error inesperado, por favor intenta nuevamente.',
         variant: 'destructive',
       });
     } else {

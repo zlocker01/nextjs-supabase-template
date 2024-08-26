@@ -15,6 +15,8 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 
 /**
  * @description Asynchronous function to handle form submission sign up and login.
@@ -42,12 +44,19 @@ export const Login = () => {
     };
 
     const { error } = await supabase.auth.signInWithPassword(data);
-    if (error) {
-      console.error('❌ error!!! -->', error);
+    const errorMessage = error.message;
+    console.log('🚀 ~ onSubmit ~ errorMessage:', errorMessage);
+    if (errorMessage === 'Invalid login credentials') {
+      return toast({
+        title: '¡Error inesperado! 😱',
+        description: 'Este correo no está registrado.',
+        variant: 'destructive',
+      });
+    } else if (errorMessage === 'Email rate limit exceeded') {
       return toast({
         title: '¡Error inesperado! 😱',
         description:
-          'Ocurrió un error inesperado, por favor intenta nuevamente dentro de 1 minuto.',
+          'Ocurrió un error inesperado, por favor intenta nuevamente.',
         variant: 'destructive',
       });
     } else {
@@ -56,6 +65,8 @@ export const Login = () => {
         description: 'Vamos a iniciar sesión.',
         variant: 'success',
       });
+      revalidatePath('/');
+      redirect('http://localhost:3000/auth/confirm');
     }
   }
 
@@ -77,7 +88,7 @@ export const Login = () => {
                   />
                 </FormControl>
                 <FormDescription>
-                  Este es el correo con el que iniciaras sesión siempre
+                  Este es el correo con el que iniciarás sesión siempre.
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -97,7 +108,7 @@ export const Login = () => {
                   />
                 </FormControl>
                 <FormDescription>
-                  Ingresa una contraseña de al menos 6 caracteres
+                  Tu contraseña de al menos 6 caracteres.
                 </FormDescription>
                 <FormMessage />
               </FormItem>
