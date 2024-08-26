@@ -13,7 +13,7 @@ export const TopBar = () => {
     <header className="w-full flex flex-col md:flex-row justify-between items-center px-4 py-5">
       <div className="w-full flex justify-between items-center md:w-auto">
         <h1 className="font-bold text-2xl">
-          <Link href="/">Softia</Link>
+          <Link href="/">Home</Link>
         </h1>
         <button onClick={toggleMenu} className="md:hidden">
           <svg

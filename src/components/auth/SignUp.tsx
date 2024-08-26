@@ -16,7 +16,6 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { redirect } from 'next/navigation';
-import { revalidatePath } from 'next/cache';
 
 /**
  * @description Asynchronous function to handle form submission sign up and login.
@@ -58,7 +57,6 @@ export const SignUp = () => {
         description: 'Bienvenido.',
         variant: 'success',
       });
-      revalidatePath('http://localhost:3000');
       redirect('http://localhost:3000/auth/confirm');
     }
   }
