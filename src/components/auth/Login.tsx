@@ -44,15 +44,13 @@ export const Login = () => {
     };
 
     const { error } = await supabase.auth.signInWithPassword(data);
-    const errorMessage = error.message;
-    console.log('🚀 ~ onSubmit ~ errorMessage:', errorMessage);
-    if (errorMessage === 'Invalid login credentials') {
+    if (error?.message === 'Invalid login credentials') {
       return toast({
         title: '¡Error inesperado! 😱',
         description: 'Este correo no está registrado.',
         variant: 'destructive',
       });
-    } else if (errorMessage === 'Email rate limit exceeded') {
+    } else if (error?.message === 'Email rate limit exceeded') {
       return toast({
         title: '¡Error inesperado! 😱',
         description:
