@@ -2,7 +2,7 @@
 import { createClient } from '@/utils/supabase/client';
 import { Button } from '../ui/button';
 
-export const LogoutButton = () => {
+export const Logout = () => {
   const supabase = createClient();
   async function signOut() {
     const { error } = await supabase.auth.signOut();
