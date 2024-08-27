@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
+import { TopBar } from '@/components/TopBar';
 
 export const metadata: Metadata = {
   title: 'nombre de la app',
@@ -13,6 +14,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body>
+        <TopBar />
         {children}
         <Toaster />
       </body>

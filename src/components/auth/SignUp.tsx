@@ -15,7 +15,6 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { redirect } from 'next/navigation';
 
 /**
  * @description Asynchronous function to handle form submission sign up and login.
@@ -57,7 +56,6 @@ export const SignUp = () => {
         description: 'Bienvenido.',
         variant: 'success',
       });
-      redirect('http://localhost:3000/auth/confirm');
     }
   }
 
