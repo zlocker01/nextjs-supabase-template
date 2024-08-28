@@ -1,3 +1,5 @@
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import { z } from 'zod';
 import { userFormSchema } from '@/schemas/userSchemas/userSchema';
@@ -5,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
+import { Input } from '@/components/ui/input';
 import {
   Form,
   FormControl,
@@ -14,7 +17,6 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
 
 /**
  * @description Asynchronous function to handle form submission sign up and login.
@@ -24,6 +26,7 @@ import { Input } from '@/components/ui/input';
  */
 export const Login = () => {
   const { toast } = useToast();
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof userFormSchema>>({
     resolver: zodResolver(userFormSchema),
@@ -57,10 +60,11 @@ export const Login = () => {
       });
     } else {
       toast({
-        title: '¡Listo! 😎',
-        description: 'Vamos a iniciar sesión.',
+        title: '¡Listo! 👋',
+        description: 'Bienvenido nuevamente.',
         variant: 'success',
       });
+      router.push('/perfil');
     }
   }
 
@@ -113,6 +117,9 @@ export const Login = () => {
           </Button>
         </form>
       </Form>
+      <Link href="/registro" className="text-blue-500">
+        Registrate
+      </Link>
     </div>
   );
 };

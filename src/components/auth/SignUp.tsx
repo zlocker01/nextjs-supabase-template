@@ -53,7 +53,7 @@ export const SignUp = () => {
     } else {
       toast({
         title: '¡Listo! 😎',
-        description: 'Bienvenido.',
+        description: 'Revisa tu correo para validar tu cuenta.',
         variant: 'success',
       });
     }

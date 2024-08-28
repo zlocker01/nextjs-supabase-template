@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
+import { Button } from './ui/button';
 
 export const TopBar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -55,7 +56,9 @@ export const TopBar = () => {
       <div className="w-full mt-4 md:mt-0 md:w-auto md:flex md:justify-end">
         <ul className="flex justify-end items-center gap-3">
           <li>
-            <Link href="/login">Iniciar Sesión</Link>
+            <Button>
+              <Link href="/login">Iniciar Sesión</Link>
+            </Button>
           </li>
         </ul>
       </div>

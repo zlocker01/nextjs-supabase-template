@@ -35,7 +35,7 @@ export const Footer = () => {
         <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
           © 2024{' '}
           <Link href="/" className="hover:underline">
-            Softia™
+            Nombre App™
           </Link>
           . Todos los derechos reservados.
         </span>
