@@ -117,9 +117,14 @@ export const Login = () => {
           </Button>
         </form>
       </Form>
-      <Link href="/registro" className="text-blue-500">
-        Registrate
-      </Link>
+      <div className="flex justify-between mt-2">
+        <Link href="/registro" className="text-blue-500">
+          Registrate
+        </Link>
+        <Link href="/password" className="text-blue-500">
+          Recuperar Contraseña
+        </Link>
+      </div>
     </div>
   );
 };
