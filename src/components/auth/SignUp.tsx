@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { Navigation } from './Navigation';
 
 /**
  * @description Asynchronous function to handle form submission sign up and login.
@@ -108,6 +109,12 @@ export const SignUp = () => {
           </Button>
         </form>
       </Form>
+      <Navigation
+        link1="Iniciar sesión"
+        href1="/login"
+        link2="¿Olvidaste tu contraseña?"
+        href2="/olvide-password"
+      />
     </div>
   );
 };
