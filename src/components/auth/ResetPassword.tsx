@@ -1,3 +1,4 @@
+'use client';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import { z } from 'zod';
@@ -24,7 +25,7 @@ import {
  * @param {z.infer<typeof userFormSchema>} values - The values submitted in the form.
  * @return {void} This function does not return anything.
  */
-export const Login = () => {
+export const ResetePassword = () => {
   const { toast } = useToast();
   const router = useRouter();
 
@@ -32,7 +33,6 @@ export const Login = () => {
     resolver: zodResolver(userFormSchema),
     defaultValues: {
       email: '',
-      password: '',
     },
   });
 
@@ -41,30 +41,22 @@ export const Login = () => {
 
     const data = {
       email: values.email as string,
-      password: values.password as string,
     };
 
-    const { error } = await supabase.auth.signInWithPassword(data);
-    if (error?.message === 'Invalid login credentials') {
+    const { error } = await supabase.auth.resetPasswordForEmail(data.email);
+    if (error) {
       return toast({
         title: '¡Error inesperado! 😱',
-        description: 'Este correo no está registrado.',
-        variant: 'destructive',
-      });
-    } else if (error?.message === 'Email rate limit exceeded') {
-      return toast({
-        title: '¡Error inesperado! 😱',
-        description:
-          'Ocurrió un error inesperado, por favor intenta nuevamente.',
+        description: 'Intenta nuevamente.',
         variant: 'destructive',
       });
     } else {
       toast({
         title: '¡Listo! 👋',
-        description: 'Bienvenido nuevamente.',
+        description: 'Hemos enviado un correo para restablecer tu contraseña.',
         variant: 'success',
       });
-      router.push('/perfil');
+      router.push('/nuevo-password');
     }
   }
 
@@ -86,42 +78,23 @@ export const Login = () => {
                   />
                 </FormControl>
                 <FormDescription>
-                  Este es el correo con el que iniciarás sesión siempre.
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Contraseña</FormLabel>
-                <FormControl>
-                  <Input
-                    type="password"
-                    placeholder="Escribe tu contraseña aquí"
-                    {...field}
-                  />
-                </FormControl>
-                <FormDescription>
-                  Tu contraseña de al menos 6 caracteres.
+                  Este es el correo al que enviaremos tu enlace de
+                  restablecimiento.
                 </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
           <Button size={'xs'} type="submit">
-            Iniciar Sesión
+            Enviar Correo
           </Button>
         </form>
       </Form>
       <Navigation
-        link1="¿Olvidaste tu contraseña?"
-        href1="/olvide-password"
-        link2="Registrarse"
-        href2="/registro"
+        link1="Registrarse"
+        href1="/registro"
+        link2="Iniciar sesión"
+        href2="/login"
       />
     </div>
   );
