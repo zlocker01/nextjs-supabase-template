@@ -1,8 +1,7 @@
 'use client';
-import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import { z } from 'zod';
-import { userFormSchema } from '@/schemas/userSchemas/userSchema';
+import { resetPasswordSchema } from '@/schemas/userSchemas/resetPasswordSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
@@ -20,23 +19,22 @@ import {
 } from '@/components/ui/form';
 
 /**
- * @description Asynchronous function to handle form submission sign up and login.
+ * @description Asynchronous function to handle form reset password.
  *
  * @param {z.infer<typeof userFormSchema>} values - The values submitted in the form.
  * @return {void} This function does not return anything.
  */
 export const ResetePassword = () => {
   const { toast } = useToast();
-  const router = useRouter();
 
-  const form = useForm<z.infer<typeof userFormSchema>>({
-    resolver: zodResolver(userFormSchema),
+  const form = useForm<z.infer<typeof resetPasswordSchema>>({
+    resolver: zodResolver(resetPasswordSchema),
     defaultValues: {
       email: '',
     },
   });
 
-  async function onSubmit(values: z.infer<typeof userFormSchema>) {
+  async function onSubmit(values: z.infer<typeof resetPasswordSchema>) {
     const supabase = createClient();
 
     const data = {
@@ -56,7 +54,6 @@ export const ResetePassword = () => {
         description: 'Hemos enviado un correo para restablecer tu contraseña.',
         variant: 'success',
       });
-      router.push('/nuevo-password');
     }
   }
 
