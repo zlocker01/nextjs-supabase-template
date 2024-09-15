@@ -1,7 +1,13 @@
 // ! extension de eslint para que sea mas estricto y para la disponibilidad de react en todo momento y control de variables declaradas pero no usadas en codigo
 
 {
-  "extends": ["next", "next/core-web-vitals", "eslint:recommended"],
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:testing-library/jest-dom",
+    "plugin:jest-dom/recommended"
+  ],
   "globals": {
     "React": "readonly"
   },
