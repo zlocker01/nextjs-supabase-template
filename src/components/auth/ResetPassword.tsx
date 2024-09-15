@@ -50,7 +50,7 @@ export const ResetePassword = () => {
       });
     } else {
       toast({
-        title: '¡Listo! 👋',
+        title: '¡Listo! 😎',
         description: 'Hemos enviado un correo para restablecer tu contraseña.',
         variant: 'success',
       });
