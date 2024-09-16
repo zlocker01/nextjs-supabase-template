@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+🦖 Next.js Supabase Template 🦖
+TThe Ultimate Next.js and Supabase Starter Template for Your Apps
 
-## Getting Started
+Created by Diego Beristain de la Mora
 
-First, run the development server:
+Features
+🚀 Next.js 14 (App Router)
+💚 Supabase with @supabase/ssr - Fully integrated across the entire Next.js stack (App Router, Pages Router, Client, Server, Middleware)
+⚛️ React 18
+🛠 TypeScript
+📦 pnpm - Fast and disk space efficient package manager
+🎨 TailwindCSS
+✨ shadcn/ui - Beautifully designed components for your app
+🧪 Jest with React Testing Library - Unit tests for your code
+🔄 Zod - For Schemas in Forms
+🔍 ESLint - To find and fix problems in your code
+🎨 Prettier - Code formatter for consistent style
+🐶 Husky - Run scripts before committing
+🗂 lint-staged - Run ESLint and Prettier against staged Git files
+🗺 Path Mapping - Import components or images using the @ prefix
+🌑 Light/Dark Mode - Toggle theme modes with next-themes
+🖋️ CommitLint - For better Commits
+🕷️ Debugging - Setup to use debbuging tool on VSCode
+🦥 Zustand- For Global State
 
-```bash
-npm run dev
+Clone and Run Locally
+Create a Supabase Project
+
+First, you need a Supabase project. Create one via the Supabase dashboard.
+
+Create a Next.js App Using the Supabase Starter Template
+
+bash
+Copiar código
+pnpm create next-app -e https://github.com/your-username/your-repo
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+npx create-next-app -e https://github.com/your-username/your-repo
+Navigate to Your App's Directory
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+bash
+Copiar código
+cd name-of-new-app
+Set Up Environment Variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Rename .env.local.example to .env.local and update the following:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+env
+Copiar código
+NEXT_PUBLIC_SUPABASE_URL=[INSERT SUPABASE PROJECT URL]
+NEXT_PUBLIC_SUPABASE_ANON_KEY=[INSERT SUPABASE PROJECT API ANON KEY]
+Both NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY can be found in your Supabase project's API settings.
 
-## Learn More
+Run the Local Development Server
 
-To learn more about Next.js, take a look at the following resources:
+bash
+Copiar código
+pnpm run dev
+The starter kit should now be running on http://localhost:3000.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Check out the Local Development section for details on running Supabase locally.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Documentation
+Requirements
+Node.js >= 20.17.0
+pnpm 9.9.0
+Scripts
+pnpm dev — Starts the application in development mode at http://localhost:3000.
+pnpm build — Creates an optimized production build of your application.
+pnpm start — Starts the application in production mode.
+pnpm lint — Runs ESLint for all files in the src directory.
+pnpm format — Runs Prettier and formats files.
+pnpm ts-lint — Validate TypeScript code.
+pnpm prepare — Runs Husky install script.
+pnpm prettier — Runs Prettier to format files.
+pnpm test — Runs all the Jest tests in the project.
+pnpm test:watch — Runs Jest tests in watch mode.
