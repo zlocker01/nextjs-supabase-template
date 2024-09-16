@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { Button } from './ui/button';
+import { DarkModeButton } from '@/components/DarkModeButton';
 
 export const TopBar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -60,6 +61,7 @@ export const TopBar = () => {
               <Link href="/login">Iniciar Sesión</Link>
             </Button>
           </li>
+            <DarkModeButton />
         </ul>
       </div>
     </header>
