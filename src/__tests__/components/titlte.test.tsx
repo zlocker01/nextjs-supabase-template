@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { Title } from '@/components/Title';
+import { Title } from '@/components/navegation/Title';
 
 describe('Title component', () => {
   it('should render the title with the correct text', () => {
