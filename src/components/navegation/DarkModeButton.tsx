@@ -12,19 +12,26 @@ import { Toggle } from '../ui/toggle';
  * @returns A button element with a moon or sun icon depending on the current mode.
  */
 export function DarkModeButton() {
-  const [darkMode, setDarkMode] = useState(() => {
-    const storedMode = localStorage.getItem('darkMode');
-    return storedMode === 'true';
-  });
+  const [darkMode, setDarkMode] = useState<boolean | null>(null);
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', darkMode);
-    localStorage.setItem('darkMode', darkMode ? 'true' : 'false');
+    const storedMode = localStorage.getItem('darkMode');
+    setDarkMode(storedMode === 'true');
+    document.documentElement.classList.toggle('dark', storedMode === 'true');
+  }, []);
+
+  useEffect(() => {
+    if (darkMode !== null) {
+      localStorage.setItem('darkMode', darkMode ? 'true' : 'false');
+      document.documentElement.classList.toggle('dark', darkMode);
+    }
   }, [darkMode]);
+
+  if (darkMode === null) return null;
 
   return (
     <div>
-      <Toggle onClick={() => setDarkMode(!darkMode)}>
+      <Toggle onClick={() => setDarkMode((prev) => !prev)}>
         {darkMode ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
