@@ -4,9 +4,9 @@
   "extends": [
     "next",
     "next/core-web-vitals",
-    "eslint:recommended",
-    "plugin:testing-library/jest-dom",
-    "plugin:jest-dom/recommended"
+    "eslint:recommended"
+    // "plugin:testing-library/jest-dom",
+    // "plugin:jest-dom/recommended"
   ],
   "globals": {
     "React": "readonly"
