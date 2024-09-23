@@ -1,5 +1,5 @@
 'use client';
-import { Title } from '@/components/Title';
+import { Title } from '@/components/navegation/Title';
 import { SignUp } from '@/components/auth/SignUp';
 import { OAuth } from '@/components/auth/OAuth';
 // import { InfoDialog } from '@/components/InfoDialog';

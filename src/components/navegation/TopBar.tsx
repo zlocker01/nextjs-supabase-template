@@ -1,8 +1,8 @@
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
-import { Button } from './ui/button';
-import { DarkModeButton } from '@/components/DarkModeButton';
+import { Button } from '../ui/button';
+import { DarkModeButton } from '@/components/navegation/DarkModeButton';
 
 export const TopBar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -61,7 +61,7 @@ export const TopBar = () => {
               <Link href="/login">Iniciar Sesión</Link>
             </Button>
           </li>
-            <DarkModeButton />
+          <DarkModeButton />
         </ul>
       </div>
     </header>

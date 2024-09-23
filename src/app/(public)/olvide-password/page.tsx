@@ -1,4 +1,4 @@
-import { Title } from '@/components/Title';
+import { Title } from '@/components/navegation/Title';
 import { ResetePassword } from '@/components/auth/ResetPassword';
 
 const page = () => {

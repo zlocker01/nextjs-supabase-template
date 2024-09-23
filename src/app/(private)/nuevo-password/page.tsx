@@ -1,5 +1,5 @@
 'use client';
-import { Title } from '@/components/Title';
+import { Title } from '@/components/navegation/Title';
 import { NewPassword } from '@/components/auth/NewPassword';
 
 const page = () => {
