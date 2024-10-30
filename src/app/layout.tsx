@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { ThemeProvider } from '@/components/theme/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import { Footer } from '@/components/navegation/Footer';
 import { TopBar } from '@/components/navegation/TopBar';
@@ -15,10 +16,17 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body>
-        <TopBar />
-        {children}
-        <Toaster />
-        <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <TopBar />
+          {children}
+          <Toaster />
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
