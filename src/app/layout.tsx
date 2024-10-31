@@ -1,13 +1,11 @@
-import type { Metadata } from 'next';
 import './globals.css';
-import { ThemeProvider } from '@/components/theme/theme-provider';
+import type { Metadata } from 'next';
 import { Toaster } from '@/components/ui/toaster';
-import { Footer } from '@/components/navegation/Footer';
-import { TopBar } from '@/components/navegation/TopBar';
+import { ThemeProvider } from '@/components/theme/theme-provider';
 
 export const metadata: Metadata = {
-  title: 'nombre de la app',
-  description: 'app descripcion',
+  title: 'PsychoTracker',
+  description: 'Aplicaciòn de administracion de pacientes para psicologos',
 };
 
 export default function RootLayout({
@@ -22,10 +20,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <TopBar />
           {children}
           <Toaster />
-          <Footer />
         </ThemeProvider>
       </body>
     </html>

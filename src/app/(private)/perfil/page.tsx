@@ -1,21 +1,13 @@
-import { redirect } from 'next/navigation';
-import { createClient } from '@/utils/supabase/server';
-import { Logout } from '@/components/auth/Logout';
+import { CardUser } from '@/components/users/CardUser';
+import { getUser } from '@/data/users/getUser';
 
-export default async function PrivatePage() {
-  const supabase = createClient();
-
-  const { data, error } = await supabase.auth.getUser();
-  if (error || !data?.user) {
-    redirect('/login');
-  }
-  const user = data.user.user_metadata;
+export const revalidate = 60;
+export default async function page() {
+  const user = await getUser();
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <h2>Bienvenido {user.name}</h2>
-      <p>Correo: {user.email}</p>
-      <Logout />
+    <div className="flex flex-col justify-center items-center h-screen">
+      <CardUser user={user} />
     </div>
   );
 }
