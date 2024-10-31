@@ -2,6 +2,8 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme/theme-provider';
+import { Footer } from '@/components/navegation/Footer';
+import { TopBar } from '@/components/navegation/TopBar';
 
 export const metadata: Metadata = {
   title: 'PsychoTracker',
@@ -14,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body>
+        <TopBar />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -22,6 +25,7 @@ export default function RootLayout({
         >
           {children}
           <Toaster />
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
